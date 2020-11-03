@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
+  <reporter-output>
+  </reporter-output>
+  <suite name="Default suite" duration-ms="33749" started-at="2020-11-02T21:25:04 EST" finished-at="2020-11-02T21:25:37 EST">
+    <groups>
+    </groups>
+    <test name="Default test" duration-ms="33749" started-at="2020-11-02T21:25:04 EST" finished-at="2020-11-02T21:25:37 EST">
+      <class name="readexceldata.TirupatiBalaji_Login">
+        <test-method status="PASS" signature="setUp()[pri:0, instance:readexceldata.TirupatiBalaji_Login@131276c2]" name="setUp" is-config="true" duration-ms="4368" started-at="2020-11-02T21:25:04 EST" finished-at="2020-11-02T21:25:08 EST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- setUp -->
+        <test-method status="PASS" signature="balaji_register()[pri:0, instance:readexceldata.TirupatiBalaji_Login@131276c2]" name="balaji_register" duration-ms="29332" started-at="2020-11-02T21:25:08 EST" finished-at="2020-11-02T21:25:37 EST">
+          <reporter-output>
+          </reporter-output>
+        </test-method> <!-- balaji_register -->
+      </class> <!-- readexceldata.TirupatiBalaji_Login -->
+    </test> <!-- Default test -->
+  </suite> <!-- Default suite -->
+</testng-results>
