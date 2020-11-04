@@ -41,7 +41,7 @@ public class CompoundInterest {
 			int interest = (int) row.getCell(1).getNumericCellValue();
 			int period = (int) row.getCell(2).getNumericCellValue();
 			String frequency = row.getCell(3).getStringCellValue();
-			double maturityvalue_expected = (double) row.getCell(4).getNumericCellValue();
+			double maturityvalue_expected = row.getCell(4).getNumericCellValue();
 
 			System.out.println("Expected mvalue: " + maturityvalue_expected);
 
