@@ -3,13 +3,12 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="readexceldata.TirupatiBalaji_Login">
+      <class name="readexceldata.SimpleInterest_Sample">
         <methods>
-          <include name="balaji_register"/>
+          <include name="f"/>
           <include name="setUp"/>
-          <include name="close"/>
         </methods>
-      </class> <!-- readexceldata.TirupatiBalaji_Login -->
+      </class> <!-- readexceldata.SimpleInterest_Sample -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

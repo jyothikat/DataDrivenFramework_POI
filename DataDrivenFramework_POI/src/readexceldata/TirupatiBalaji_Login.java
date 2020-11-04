@@ -77,6 +77,7 @@ public class TirupatiBalaji_Login {
 			DataFormatter formatter = new DataFormatter();
 			String mobileNumber = formatter.formatCellValue(cell2);
 			driver.findElement(By.name("mobNo")).sendKeys(mobileNumber);
+			
 
 			driver.findElement(By.xpath("(//input[@name='gender'])[2]")).click();
 			driver.findElement(By.name("address1")).sendKeys(cell3.getStringCellValue());

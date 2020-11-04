@@ -21,16 +21,18 @@ public class GoogleSearch_Sample {
 	WebDriver driver;
 
 	@BeforeClass
-	public void setUp() {
+	public void setUp() throws InterruptedException {
 
 		System.setProperty("webdriver.chrome.driver", ".\\BrowserDrivers\\chromedriver.exe");
 		driver = new ChromeDriver();
+		
 
 	}
 
 	@Test
 	public void f() throws InterruptedException, IOException {
-
+		
+				
 		FileInputStream fipath = new FileInputStream(".\\TestData\\Testdata.xlsx");
 		XSSFWorkbook workbook = new XSSFWorkbook(fipath);
 		XSSFSheet sheet = workbook.getSheet("GoogleSearch");
@@ -40,17 +42,21 @@ public class GoogleSearch_Sample {
 
 		for (int i = 1; i <= rowcount; i++) {
 			XSSFRow row = sheet.getRow(i);
-			XSSFCell cell0 = row.getCell(0);
-
+//			XSSFCell cell0 = row.getCell(0);
+			
+			String searchtext = row.getCell(0).getStringCellValue();
+			
 			driver.get("https://www.google.com");
 			driver.manage().window().maximize();
-			Thread.sleep(4000);
-			driver.findElement(By.name("q")).sendKeys(cell0.getStringCellValue());
+			Thread.sleep(2000);
+			
+			driver.findElement(By.name("q")).sendKeys(searchtext);
 			Thread.sleep(6000);
 			WebElement search = driver.findElement(By.xpath("(//input[@name='btnK'])[2]"));
 			((JavascriptExecutor) driver).executeScript("arguments[0].click();", search);
 			Thread.sleep(6000);
 			String title = driver.getTitle();
+			driver.findElement(By.name("q")).clear();
 			
 			if (title.contains("Google Search")) {
 				System.out.println("Search was successful");
