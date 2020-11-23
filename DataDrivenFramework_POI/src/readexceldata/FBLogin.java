@@ -10,6 +10,7 @@ import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
+import org.openqa.selenium.ie.InternetExplorerDriver;
 import org.testng.annotations.AfterMethod;
 import org.testng.annotations.BeforeClass;
 import org.testng.annotations.Test;
@@ -21,8 +22,8 @@ public class FBLogin {
 	@BeforeClass
 	public void setUp() {
 
-		System.setProperty("webdriver.chrome.driver", ".\\BrowserDrivers\\chromedriver.exe");
-		driver = new ChromeDriver();
+		System.setProperty("webdriver.ie.driver", ".\\BrowserDrivers\\IEDriverServer.exe");
+		driver = new InternetExplorerDriver();
 
 	}
 

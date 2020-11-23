@@ -1,14 +1,11 @@
 package readexceldata;
 
 import org.testng.annotations.Test;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
+
+import lib.ExcelDataConfig;
+
 import java.io.IOException;
 
-import org.apache.poi.xssf.usermodel.XSSFCell;
-import org.apache.poi.xssf.usermodel.XSSFRow;
-import org.apache.poi.xssf.usermodel.XSSFSheet;
-import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
@@ -35,26 +32,19 @@ public class SimpleInterest_Sample {
 		driver.manage().window().maximize();
 		Thread.sleep(3000);
 		
-		FileInputStream fipath = new FileInputStream(".\\TestData\\Testdata.xlsx");
-		XSSFWorkbook workbook = new XSSFWorkbook(fipath);
-		XSSFSheet sheet = workbook.getSheet("SimpleInterest");
-
-		int rowcount = sheet.getLastRowNum();
-		System.out.println("No. of rows are: " + rowcount);
+		ExcelDataConfig excel = new ExcelDataConfig(".\\TestData\\Testdata.xlsx");
+		int rowcount = excel.getRowCount("SimpleInterest");
 
 		for (int i = 1; i <= rowcount; i++) {
-			XSSFRow row = sheet.getRow(i);
+			
+			int principal = (int) excel.getNumericData("SimpleInterest", i, 0);
+			int interest = (int) excel.getNumericData("SimpleInterest", i, 1);
+			int period = (int) excel.getNumericData("SimpleInterest", i, 2);
+			String frequency = excel.getStringData("SimpleInterest", i, 3);
+			double maturityvalue =  excel.getNumericData("SimpleInterest", i, 4);
+			System.out.println("The expected maturity value is "+maturityvalue);
 
-//			XSSFCell principlecell = row.getCell(0);
-//			int principle = (int) principlecell.getNumericCellValue();
-
-			int principle = (int) row.getCell(0).getNumericCellValue(); // type casting for numeric value
-			int interest = (int) row.getCell(1).getNumericCellValue();
-			int period = (int) row.getCell(2).getNumericCellValue();
-			String frequency = row.getCell(3).getStringCellValue();
-			int maturityvalue = (int) row.getCell(4).getNumericCellValue();
-
-			driver.findElement(By.id("principal")).sendKeys(String.valueOf(principle));
+			driver.findElement(By.id("principal")).sendKeys(String.valueOf(principal));
 			driver.findElement(By.id("interest")).sendKeys(String.valueOf(interest));
 			driver.findElement(By.id("tenure")).sendKeys(String.valueOf(period));
 
@@ -75,20 +65,17 @@ public class SimpleInterest_Sample {
 
 			if (Double.parseDouble(actualmvalue) == maturityvalue) {
 				System.out.println("Test Passed");
-
-				row.createCell(5).setCellValue("Pass");
-
+				excel.setcellData("SimpleInterest", i, 5, "Pass", ".\\TestData\\Testdata.xlsx");
+				
 			} else {
 				System.out.println("Test failed");
-				row.createCell(5).setCellValue("Fail");
+				excel.setcellData("SimpleInterest", i, 5, "Fail", ".\\TestData\\Testdata.xlsx");
 			}
 
 		}
 		
 		driver.quit();
-		FileOutputStream fos = new FileOutputStream(".\\TestData\\Testdata.xlsx");
-		workbook.write(fos);
-		fos.close();
+		
 	}
 
 }

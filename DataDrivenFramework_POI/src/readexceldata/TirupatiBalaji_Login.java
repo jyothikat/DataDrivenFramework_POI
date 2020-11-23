@@ -36,7 +36,7 @@ public class TirupatiBalaji_Login {
 	@Test
 	public void balaji_register() throws IOException, InterruptedException {
 
-
+				
 		FileInputStream fipath = new FileInputStream(".\\TestData\\Testdata.xlsx");
 		XSSFWorkbook workbook = new XSSFWorkbook(fipath);
 		XSSFSheet sheet = workbook.getSheet("BalajiLogin");
@@ -63,7 +63,7 @@ public class TirupatiBalaji_Login {
 			XSSFCell cell11 = row.getCell(11);
 			XSSFCell cell12 = row.getCell(12);
 			XSSFCell cell13 = row.getCell(13);
-
+			
 			driver.get("https://tirupatibalaji.ap.gov.in/");
 			driver.manage().window().maximize();
 			driver.manage().timeouts().implicitlyWait(20, TimeUnit.SECONDS);

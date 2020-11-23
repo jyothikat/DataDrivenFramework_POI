@@ -3,12 +3,11 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="readexceldata.SimpleInterest_Sample">
+      <class name="readexceldata.CompoundInterest">
         <methods>
           <include name="f"/>
-          <include name="setUp"/>
         </methods>
-      </class> <!-- readexceldata.SimpleInterest_Sample -->
+      </class> <!-- readexceldata.CompoundInterest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->
